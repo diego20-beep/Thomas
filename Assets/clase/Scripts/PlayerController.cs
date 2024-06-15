@@ -4,7 +4,7 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
-public class Script : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigibody;
     public float Speed;
@@ -12,7 +12,8 @@ public class Script : MonoBehaviour
     public float jumpForce;
     public float groundDistance;
     private bool grounded;
-
+    public GameObject oDeadPlayer;
+    Vector3 startPo;
 
     void Awake()
     {
@@ -36,6 +37,10 @@ public class Script : MonoBehaviour
             rigibody.AddForce(Vector2.up * jumpForce);
         }
 
+    }
+    public void ResetPosition()
+    {
+        this.transform.position = startPo;
     }
 
     private void FixedUpdate()
